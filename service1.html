@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNS運用代行 | 株式会社NISSHOU</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #FF5555;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 0.95em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #FF5555;
+        }
+
+        .page-hero {
+            background: linear-gradient(135deg, #FF5555 0%, #FF8844 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 2.2em;
+            color: #FF5555;
+            margin-bottom: 30px;
+            border-bottom: 4px solid #FF8844;
+            padding-bottom: 15px;
+        }
+
+        .subsection-title {
+            font-size: 1.5em;
+            color: #FF5555;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .flow-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .flow-step {
+            background: #FFE5E5;
+            border: 2px solid #FF5555;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .flow-step .step-number {
+            color: #FF5555;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .solution-box {
+            background: white;
+            border-left: 5px solid #FF5555;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .solution-box h3 {
+            color: #FF5555;
+            margin-bottom: 10px;
+        }
+
+        .solution-box p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .plan-card {
+            background: #FFE5E5;
+            border: 2px solid #FF5555;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .plan-name {
+            color: #FF5555;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .plan-price {
+            color: #FF5555;
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .plan-features {
+            text-align: left;
+            list-style: none;
+        }
+
+        .plan-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #FFD0D0;
+        }
+
+        .plan-features li:before {
+            content: "✓ ";
+            color: #FF5555;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .case-study {
+            background: white;
+            border-left: 5px solid #FF5555;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .case-study h4 {
+            color: #FF5555;
+            margin-bottom: 10px;
+        }
+
+        .case-result {
+            color: #FF8844;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .cta-section {
+            background: #FFE5E5;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .cta-btn {
+            background: #FF5555;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .footer-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            main {
+                padding: 30px 20px;
+            }
+
+            .page-hero h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">NISSHOU</div>
+        <ul>
+            <li><a href="index.html">ホーム</a></li>
+            <li><a href="service1.html">SNS運用代行</a></li>
+            <li><a href="service2.html">Japan Tourism</a></li>
+            <li><a href="service3.html">大阪グルメ</a></li>
+            <li><a href="service4.html">岡山グルメ</a></li>
+            <li><a href="cases.html">実績</a></li>
+            <li><a href="company.html">会社情報</a></li>
+            <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="page-hero">
+    <h1>SNS運用代行</h1>
+    <p>ショート動画で、店舗を「満席」にする</p>
+</div>
+
+<main>
+
+<section class="section">
+    <h2 class="section-title">サービス概要</h2>
+    <p>Instagram & TikTok のショート動画で、飲食店を「満席」にするプロの運用代行サービス。</p>
+    <p style="margin-top: 15px;">アルゴリズムに基づいた企画・撮影・編集・投稿・分析まで、すべてを一気通貫でお任せください。</p>
+</section>
+
+<section class="section">
+    <h2 class="section-title">3つの解決策</h2>
+
+    <div class="solution-box">
+        <h3>① 店舗への確実な来店導線を構築</h3>
+        <p>ただ認知を広げるだけでなく、視聴者が実際に「行ってみたい」「食べてみたい」と感じる導線を設計。プロフィール、ハイライト、リンクを最適化し、認知から予約・来店へとスムーズに繋げます。</p>
+    </div>
+
+    <div class="solution-box">
+        <h3>② アルゴリズムに最適化した動画設計</h3>
+        <p>冒頭3秒でユーザーを惹きつける「フック」と「保存数」最大化を徹底。アルゴリズム指標を緻密に組み込んだ台本で、自然な拡散（バイラル）を生み出します。</p>
+    </div>
+
+    <div class="solution-box">
+        <h3>③ インバウンド需要の最大獲得</h3>
+        <p>訪日観光客層に刺さる英語発信、海外のトレンドに合わせた動画構成で、グローバルな認知を獲得。多国籍な新規客が日常的に来店し、SNSだけで満席になるサイクルを実現します。</p>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="section-title">サービスフロー</h2>
+    <div class="flow-container">
+        <div class="flow-step">
+            <div class="step-number">01</div>
+            <div>企画台本<br>作成</div>
+        </div>
+        <div class="flow-step">
+            <div class="step-number">02</div>
+            <div>現地<br>撮影</div>
+        </div>
+        <div class="flow-step">
+            <div class="step-number">03</div>
+            <div>動画<br>編集</div>
+        </div>
+        <div class="flow-step">
+            <div class="step-number">04</div>
+            <div>投稿<br>代行</div>
+        </div>
+        <div class="flow-step">
+            <div class="step-number">05</div>
+            <div>分析・<br>改善</div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="section-title">料金プラン</h2>
+    <p style="margin-bottom: 30px;">3つのプランから、あなたのビジネスに最適なものをお選びください。</p>
+
+    <div class="plans-grid">
+        <div class="plan-card">
+            <div class="plan-name">プラン1</div>
+            <div class="plan-price">¥10万/月</div>
+            <ul class="plan-features">
+                <li>月4本のショート動画</li>
+                <li>企画台本作成</li>
+                <li>現地撮影</li>
+                <li>動画編集</li>
+                <li>投稿代行</li>
+                <li>月次レポート</li>
+            </ul>
+        </div>
+
+        <div class="plan-card" style="border: 3px solid #FF5555;">
+            <div style="background: #FF5555; color: white; padding: 8px; margin: -30px -30px 15px -30px; border-radius: 8px 8px 0 0;">⭐ おすすめ</div>
+            <div class="plan-name">プラン2（推奨）</div>
+            <div class="plan-price">¥18万/月</div>
+            <ul class="plan-features">
+                <li>月8本のショート動画</li>
+                <li>企画台本作成</li>
+                <li>現地撮影</li>
+                <li>動画編集</li>
+                <li>投稿代行</li>
+                <li>月次レポート</li>
+                <li>SNSコンサル</li>
+            </ul>
+        </div>
+
+        <div class="plan-card">
+            <div class="plan-name">プラン3</div>
+            <div class="plan-price">¥2万/本</div>
+            <ul class="plan-features">
+                <li>撮影なし</li>
+                <li>素材提供で対応</li>
+                <li>企画台本作成</li>
+                <li>動画編集</li>
+                <li>投稿代行</li>
+                <li>月次レポート</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="section-title">成功事例</h2>
+
+    <div class="case-study">
+        <h4>大阪の天丼屋</h4>
+        <p>オープンから満席になり、SNSからの来客がほとんどを占める運用に成功。</p>
+        <div class="case-result">成果：毎日満席</div>
+    </div>
+
+    <div class="case-study">
+        <h4>大阪の和牛ステーキ屋</h4>
+        <p>SNSからの効果的な集客設計により、連日満席になる圧倒的な成果を達成。</p>
+        <div class="case-result">成果：連日満席</div>
+    </div>
+
+    <div class="case-study">
+        <h4>大阪の串カツ屋</h4>
+        <p>0からアカウントを開始し、短期間で8000フォロワー超えを達成。</p>
+        <div class="case-result">成果：フォロワー8000人超</div>
+    </div>
+
+    <div class="case-study">
+        <h4>倉敷のラーメン屋</h4>
+        <p>フォロワー4,000人超えを達成。SNS経由での新規・リピート来店が大幅に増加。</p>
+        <div class="case-result">成果：フォロワー4000人超、来店増加</div>
+    </div>
+</section>
+
+<div class="cta-section">
+    <h2 style="color: #FF5555; margin-bottom: 20px;">無料相談のご案内</h2>
+    <p style="margin-bottom: 20px;">現在のSNS運用状況をヒアリングし、最適なプランをご提案いたします。</p>
+    <a href="contact.html" class="cta-btn">相談フォームへ</a>
+</div>
+
+</main>
+
+<footer>
+    <p><strong>株式会社NISSHOU</strong></p>
+    <p>所在地：大阪｜代表：日髙 建</p>
+    <div class="footer-links">
+        <a href="index.html">ホーム</a>
+        <a href="service1.html">SNS運用代行</a>
+        <a href="service2.html">Japan Tourism</a>
+        <a href="service3.html">大阪グルメ</a>
+        <a href="service4.html">岡山グルメ</a>
+        <a href="cases.html">実績</a>
+        <a href="company.html">会社情報</a>
+        <a href="contact.html">お問い合わせ</a>
+    </div>
+    <p style="margin-top: 30px; border-top: 1px solid #555; padding-top: 20px;">
+        © 2025 株式会社NISSHOU All Rights Reserved.
+    </p>
+</footer>
+
+</body>
+</html>
